@@ -1,0 +1,15 @@
+---
+### group_vars/DC1_LEAFS.yml
+
+type: leaf     # Must be leaf
+
+mgmt_interface_vrf: IB_MGMT
+
+# NTP Servers IP or DNS name, first NTP server will be prefered, and sourced from Managment VRF
+ntp:
+  servers:
+    - name: time.google.com
+      preferred: true
+      vrf: IB_MGMT
+    - name: pool.ntp.org
+      vrf: IB_MGMT

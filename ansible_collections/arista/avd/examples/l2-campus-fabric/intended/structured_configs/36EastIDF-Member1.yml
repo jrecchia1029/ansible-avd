@@ -1,0 +1,135 @@
+hostname: 36EastIDF-Member1
+service_routing_protocols_model: multi-agent
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+ip_name_servers:
+- ip_address: 8.8.4.4
+  vrf: IB_MGMT
+- ip_address: 8.8.8.8
+  vrf: IB_MGMT
+spanning_tree:
+  mode: mstp
+  mst_instances:
+  - id: '0'
+    priority: 57344
+local_users:
+- name: admin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$eucN5ngreuExDgwS$xnD7T8jO..GBDX0DUlp.hn.W7yW94xTjSanqgaQGBzPIhDAsyAl9N4oScHvOMvf07uVBFI4mKMxwdVEUVKgY/.
+vrfs:
+- name: IB_MGMT
+  ip_routing: false
+management_interfaces:
+- name: Management1
+  description: oob_management
+  shutdown: false
+  vrf: IB_MGMT
+  ip_address: 172.100.100.103/24
+  gateway: null
+  type: oob
+management_api_http:
+  enable_vrfs:
+  - name: IB_MGMT
+  enable_https: true
+ptp:
+  mode: boundary
+  clock_identity: 00:1C:73:7f:00:05
+  priority1: 127
+  priority2: 5
+  domain: 127
+  monitor:
+    enabled: true
+    threshold:
+      offset_from_master: 250
+      mean_path_delay: 1500
+    missing_message:
+      sequence_ids:
+        enabled: true
+        announce: 3
+        delay_resp: 3
+        follow_up: 3
+        sync: 3
+ethernet_interfaces:
+- name: Ethernet51
+  peer: 36EastIDF-A
+  peer_interface: Ethernet51
+  peer_type: leaf
+  description: 36EASTIDF-A_Ethernet51
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 51
+    mode: active
+- name: Ethernet52
+  peer: 36EastIDF-B
+  peer_interface: Ethernet51
+  peer_type: leaf
+  description: 36EASTIDF-B_Ethernet51
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 51
+    mode: active
+- name: Ethernet53
+  peer: 36EastIDF-Member3
+  peer_interface: Ethernet53
+  peer_type: leaf
+  description: 36EASTIDF-MEMBER3_Ethernet53
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 53
+    mode: active
+port_channel_interfaces:
+- name: Port-Channel51
+  description: 36EAST_Po51
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: '700'
+  ptp:
+    announce:
+      interval: 0
+      timeout: 3
+    delay_req: -3
+    sync_message:
+      interval: -3
+    transport: ipv4
+    enable: true
+- name: Port-Channel53
+  description: 36EASTIDF-MEMBER3_Po53
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: '700'
+  ptp:
+    announce:
+      interval: 0
+      timeout: 3
+    delay_req: -3
+    sync_message:
+      interval: -3
+    transport: ipv4
+    enable: true
+ip_igmp_snooping:
+  globally_enabled: true
+vlans:
+- id: 700
+  tenant: system
+  name: INBAND_MGMT
+vlan_interfaces:
+- name: Vlan700
+  description: Inband Management
+  shutdown: false
+  mtu: 1500
+  vrf: IB_MGMT
+  ip_address: 11.11.11.8/24
+  type: inband_mgmt
+static_routes:
+- destination_address_prefix: 0.0.0.0/0
+  gateway: 11.11.11.1
+  vrf: IB_MGMT

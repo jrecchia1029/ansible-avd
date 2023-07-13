@@ -1,0 +1,8 @@
+---
+### group_vars/DC1_SPINES.yml
+
+type: l3spine     # Must be either spine|l3spine
+
+# OOB Management network default gateway.
+mgmt_gateway: 172.100.100.1
+mgmt_interface: Management1

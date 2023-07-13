@@ -1,0 +1,205 @@
+hostname: SPLINE2
+static_routes:
+- vrf: MGMT
+  destination_address_prefix: 0.0.0.0/0
+  gateway: 172.100.100.1
+service_routing_protocols_model: multi-agent
+ip_routing: true
+router_multicast:
+  ipv4:
+    routing: true
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+ip_name_servers:
+- ip_address: 8.8.4.4
+  vrf: MGMT
+- ip_address: 8.8.8.8
+  vrf: MGMT
+spanning_tree:
+  mode: mstp
+  mst_instances:
+  - id: '0'
+    priority: 4096
+  no_spanning_tree_vlan: '4094'
+local_users:
+- name: admin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$eucN5ngreuExDgwS$xnD7T8jO..GBDX0DUlp.hn.W7yW94xTjSanqgaQGBzPIhDAsyAl9N4oScHvOMvf07uVBFI4mKMxwdVEUVKgY/.
+vrfs:
+- name: MGMT
+  ip_routing: false
+management_interfaces:
+- name: Management1
+  description: oob_management
+  shutdown: false
+  vrf: MGMT
+  ip_address: 172.100.100.102/24
+  gateway: 172.100.100.1
+  type: oob
+management_api_http:
+  enable_vrfs:
+  - name: MGMT
+  enable_https: true
+vlans:
+- id: 4094
+  tenant: system
+  name: MLAG_PEER
+  trunk_groups:
+  - MLAG
+- id: 700
+  tenant: system
+  name: INBAND_MGMT
+vlan_interfaces:
+- name: Vlan4094
+  description: MLAG_PEER
+  shutdown: false
+  ip_address: 169.254.0.1/31
+  no_autostate: true
+  mtu: 1500
+  ospf_network_point_to_point: true
+  ospf_area: 0.0.0.0
+  pim:
+    ipv4:
+      sparse_mode: true
+- name: Vlan700
+  description: Inband Management
+  shutdown: false
+  mtu: 1500
+  ip_address: 11.11.11.3/24
+  ip_virtual_router_addresses:
+  - 11.11.11.1
+  ip_attached_host_route_export:
+    enabled: true
+    distance: 19
+port_channel_interfaces:
+- name: Port-Channel49
+  description: MLAG_PEER_SPLINE1_Po49
+  type: switched
+  shutdown: false
+  mode: trunk
+  trunk_groups:
+  - LEAF_PEER_L3
+  - MLAG
+- name: Port-Channel1
+  description: 36WESTIDF_Po49
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: '700'
+  mlag: 1
+  ptp:
+    enable: true
+- name: Port-Channel2
+  description: 36EAST_Po49
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: '700'
+  mlag: 2
+  ptp:
+    enable: true
+- name: Port-Channel3
+  description: 37WEST_Po49
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: '700'
+  mlag: 3
+ethernet_interfaces:
+- name: Ethernet49
+  peer: SPLINE1
+  peer_interface: Ethernet49
+  peer_type: mlag_peer
+  description: MLAG_PEER_SPLINE1_Ethernet49
+  type: port-channel-member
+  shutdown: false
+  channel_group:
+    id: 49
+    mode: active
+- name: Ethernet50
+  peer: SPLINE1
+  peer_interface: Ethernet50
+  peer_type: mlag_peer
+  description: MLAG_PEER_SPLINE1_Ethernet50
+  type: port-channel-member
+  shutdown: false
+  channel_group:
+    id: 49
+    mode: active
+- name: Ethernet1
+  peer: 36WestIDF
+  peer_interface: Ethernet50
+  peer_type: leaf
+  description: 36WESTIDF_Ethernet50
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 1
+    mode: active
+- name: Ethernet2
+  peer: 36EastIDF-B
+  peer_interface: Ethernet50
+  peer_type: leaf
+  description: 36EASTIDF-B_Ethernet50
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 2
+    mode: active
+- name: Ethernet3
+  peer: 37WestIDF-A
+  peer_interface: Ethernet50
+  peer_type: leaf
+  description: 37WESTIDF-A_Ethernet50
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 3
+    mode: active
+- name: Ethernet4
+  peer: 37WestIDF-B
+  peer_interface: Ethernet50
+  peer_type: leaf
+  description: 37WESTIDF-B_Ethernet50
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 3
+    mode: active
+mlag_configuration:
+  domain_id: SPLINES
+  local_interface: Vlan4094
+  peer_address: 169.254.0.0
+  peer_link: Port-Channel49
+  reload_delay_mlag: '300'
+  reload_delay_non_mlag: '330'
+loopback_interfaces:
+- name: Loopback0
+  description: Router_ID
+  shutdown: false
+  ip_address: 10.10.1.2/32
+  ospf_area: 0.0.0.0
+router_ospf:
+  process_ids:
+  - id: 100
+    passive_interface_default: true
+    router_id: 10.10.1.2
+    max_lsa: 12000
+    no_passive_interfaces:
+    - Vlan4094
+    bfd_enable: false
+    redistribute:
+      connected: {}
+router_pim_sparse_mode:
+  ipv4:
+    rp_addresses:
+    - address: 1.1.1.1
+      groups:
+      - 224.0.0.0/10
+ip_igmp_snooping:
+  globally_enabled: true
+ip_virtual_router_mac_address: 00:1c:73:00:dc:01

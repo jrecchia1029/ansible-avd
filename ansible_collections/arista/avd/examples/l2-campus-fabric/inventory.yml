@@ -1,0 +1,78 @@
+---
+# inventory.yml
+NYC:
+  children:
+    1PENN:
+      children:
+        1PENN_SPLINES:
+          hosts:
+            SPLINE1:
+              ansible_host: 172.100.100.101
+            SPLINE2:
+              ansible_host: 172.100.100.102
+        1PENN_LEAFS:
+          children:
+            36East:
+              hosts:
+                36EastIDF-A:
+                  ansible_host: 172.100.100.103
+                36EastIDF-B:
+                  ansible_host: 172.100.100.104
+                36EastIDF-Member1:
+                  ansible_host: 172.100.100.105
+                36EastIDF-Member2:
+                  ansible_host: 172.100.100.106
+                36EastIDF-Member3:
+                  ansible_host: 172.100.100.107
+            36West:
+              hosts:
+                36WestIDF:
+                  ansible_host: 172.100.100.108
+            # 37East:
+            #   hosts:
+            #     37EastIDF-A:
+            #       ansible_host: 172.100.100.109
+            #     37EastIDF-B:
+            #       ansible_host: 172.100.100.110
+            #     37EastIDF-Member1:
+            #       ansible_host: 172.100.100.111
+            #     37EastIDF-Member2:
+            #       ansible_host: 172.100.100.112
+            #     37EastIDF-Member3:
+            #       ansible_host: 172.100.100.113
+            #     37EastIDF-Member4:
+            #       ansible_host: 172.100.100.114
+            37West:
+              hosts:
+                37WestIDF-A:
+                  ansible_host: 172.100.100.115
+                37WestIDF-B:
+                  ansible_host: 172.100.100.116
+            # 38East:
+            #   hosts:
+            #     38EastIDF:
+            #       ansible_host: 172.100.100.119
+            # 38West:
+            #   hosts:
+            #     38WestIDF:
+            #       ansible_host: 172.100.100.120
+            # 39East:
+            #   hosts:
+            #     39EastIDF:
+            #       ansible_host: 172.100.100.119
+            # 39West:
+            #   children:
+            #     39WestIDF-A:
+            #       ansible_host: 172.100.100.122
+            #     39WestIDF-B:
+            #       ansible_host: 172.100.100.123
+            #     39WestIDF-Member1:
+            #       ansible_host: 172.100.100.124
+    1PENN_NETWORK_SERVICES:
+      children:
+        DC1_LEAFS:
+        DC1_SPINES:
+    1PENN_NETWORK_PORTS:
+      children:
+        DC1_LEAFS:
+        DC1_SPINES:
