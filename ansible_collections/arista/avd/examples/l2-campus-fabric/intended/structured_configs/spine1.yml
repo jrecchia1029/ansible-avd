@@ -1,0 +1,292 @@
+hostname: spine1
+static_routes:
+- vrf: MGMT
+  destination_address_prefix: 0.0.0.0/0
+  gateway: 172.100.100.1
+service_routing_protocols_model: multi-agent
+ip_routing: true
+router_multicast:
+  ipv4:
+    routing: true
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+ip_name_servers:
+- ip_address: 8.8.4.4
+  vrf: MGMT
+- ip_address: 8.8.8.8
+  vrf: MGMT
+spanning_tree:
+  mode: mstp
+  mst_instances:
+  - id: '0'
+    priority: 4096
+  no_spanning_tree_vlan: 4093-4094
+local_users:
+- name: admin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$eucN5ngreuExDgwS$xnD7T8jO..GBDX0DUlp.hn.W7yW94xTjSanqgaQGBzPIhDAsyAl9N4oScHvOMvf07uVBFI4mKMxwdVEUVKgY/.
+vrfs:
+- name: MGMT
+  ip_routing: false
+management_interfaces:
+- name: Management1
+  description: oob_management
+  shutdown: false
+  vrf: MGMT
+  ip_address: 172.100.100.101/24
+  gateway: 172.100.100.1
+  type: oob
+management_api_http:
+  enable_vrfs:
+  - name: MGMT
+  enable_https: true
+vlans:
+- id: 4093
+  tenant: system
+  name: LEAF_PEER_L3
+  trunk_groups:
+  - LEAF_PEER_L3
+- id: 4094
+  tenant: system
+  name: MLAG_PEER
+  trunk_groups:
+  - MLAG
+- id: 110
+  name: IDF1-Data
+  tenant: MY_FABRIC
+- id: 120
+  name: IDF1-Voice
+  tenant: MY_FABRIC
+- id: 130
+  name: IDF1-Guest
+  tenant: MY_FABRIC
+- id: 210
+  name: IDF2-Data
+  tenant: MY_FABRIC
+- id: 220
+  name: IDF2-Voice
+  tenant: MY_FABRIC
+- id: 230
+  name: IDF2-Guest
+  tenant: MY_FABRIC
+- id: 310
+  name: IDF3-Data
+  tenant: MY_FABRIC
+- id: 320
+  name: IDF3-Voice
+  tenant: MY_FABRIC
+- id: 330
+  name: IDF3-Guest
+  tenant: MY_FABRIC
+- id: 3000
+  tenant: system
+  name: INBAND_MGMT
+vlan_interfaces:
+- name: Vlan4093
+  description: MLAG_PEER_L3_PEERING
+  shutdown: false
+  mtu: 1500
+  ip_address: 192.168.255.0/31
+  ospf_network_point_to_point: true
+  ospf_area: 0.0.0.0
+  pim:
+    ipv4:
+      sparse_mode: true
+- name: Vlan4094
+  description: MLAG_PEER
+  shutdown: false
+  ip_address: 169.254.0.0/31
+  no_autostate: true
+  mtu: 1500
+- name: Vlan110
+  tenant: MY_FABRIC
+  tags:
+  - '110'
+  description: IDF1-Data
+  shutdown: false
+- name: Vlan120
+  tenant: MY_FABRIC
+  tags:
+  - '120'
+  description: IDF1-Voice
+  shutdown: false
+- name: Vlan130
+  tenant: MY_FABRIC
+  tags:
+  - '130'
+  description: IDF1-Guest
+  shutdown: false
+- name: Vlan210
+  tenant: MY_FABRIC
+  tags:
+  - '210'
+  description: IDF2-Data
+  shutdown: false
+- name: Vlan220
+  tenant: MY_FABRIC
+  tags:
+  - '220'
+  description: IDF2-Voice
+  shutdown: false
+- name: Vlan230
+  tenant: MY_FABRIC
+  tags:
+  - '230'
+  description: IDF2-Guest
+  shutdown: false
+- name: Vlan310
+  tenant: MY_FABRIC
+  tags:
+  - '310'
+  description: IDF3-Data
+  shutdown: false
+- name: Vlan320
+  tenant: MY_FABRIC
+  tags:
+  - '320'
+  description: IDF3-Voice
+  shutdown: false
+- name: Vlan330
+  tenant: MY_FABRIC
+  tags:
+  - '330'
+  description: IDF3-Guest
+  shutdown: false
+- name: Vlan3000
+  description: Inband Management
+  shutdown: false
+  mtu: 1500
+  ip_address: 11.11.11.2/24
+  ip_virtual_router_addresses:
+  - 11.11.11.1
+  ip_attached_host_route_export:
+    enabled: true
+    distance: 19
+port_channel_interfaces:
+- name: Port-Channel49
+  description: MLAG_PEER_spine2_Po49
+  type: switched
+  shutdown: false
+  mode: trunk
+  trunk_groups:
+  - LEAF_PEER_L3
+  - MLAG
+- name: Port-Channel1
+  description: FLOOR1-LEAFS_Po531
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: 110,120,130,3000
+  mlag: 1
+- name: Port-Channel3
+  description: FLOOR2-LEAFS_Po531
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: 210,220,230,3000
+  mlag: 3
+- name: Port-Channel4
+  description: FLOOR3-LEAFA_Po348
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: 310,320,330,3000
+  mlag: 4
+ethernet_interfaces:
+- name: Ethernet49
+  peer: spine2
+  peer_interface: Ethernet49
+  peer_type: mlag_peer
+  description: MLAG_PEER_spine2_Ethernet49
+  type: port-channel-member
+  shutdown: false
+  channel_group:
+    id: 49
+    mode: active
+- name: Ethernet50
+  peer: spine2
+  peer_interface: Ethernet50
+  peer_type: mlag_peer
+  description: MLAG_PEER_spine2_Ethernet50
+  type: port-channel-member
+  shutdown: false
+  channel_group:
+    id: 49
+    mode: active
+- name: Ethernet1
+  peer: floor1-leafa
+  peer_interface: Ethernet53/1
+  peer_type: leaf
+  description: FLOOR1-LEAFA_Ethernet53/1
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 1
+    mode: active
+- name: Ethernet2
+  peer: floor1-leafb
+  peer_interface: Ethernet53/1
+  peer_type: leaf
+  description: FLOOR1-LEAFB_Ethernet53/1
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 1
+    mode: active
+- name: Ethernet3
+  peer: floor2-leafa
+  peer_interface: Ethernet53/1
+  peer_type: leaf
+  description: FLOOR2-LEAFA_Ethernet53/1
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 3
+    mode: active
+- name: Ethernet4
+  peer: floor3-leafa
+  peer_interface: Ethernet3/48
+  peer_type: leaf
+  description: FLOOR3-LEAFA_Ethernet3/48
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 4
+    mode: active
+mlag_configuration:
+  domain_id: Spines
+  local_interface: Vlan4094
+  peer_address: 169.254.0.1
+  peer_link: Port-Channel49
+  reload_delay_mlag: '300'
+  reload_delay_non_mlag: '330'
+loopback_interfaces:
+- name: Loopback0
+  description: Router_ID
+  shutdown: false
+  ip_address: 10.10.1.1/32
+  ospf_area: 0.0.0.0
+router_ospf:
+  process_ids:
+  - id: 100
+    passive_interface_default: true
+    router_id: 10.10.1.1
+    max_lsa: 12000
+    no_passive_interfaces:
+    - Vlan4093
+    bfd_enable: false
+    redistribute:
+      connected: {}
+router_pim_sparse_mode:
+  ipv4:
+    rp_addresses:
+    - address: 1.1.1.1
+      groups:
+      - 224.0.0.0/10
+ip_igmp_snooping:
+  globally_enabled: true
+ip_virtual_router_mac_address: 00:1c:73:00:dc:01

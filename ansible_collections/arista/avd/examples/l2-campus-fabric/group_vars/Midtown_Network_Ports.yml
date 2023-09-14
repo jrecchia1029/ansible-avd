@@ -1,0 +1,90 @@
+---
+### group_vars/DC1_NETWORK_PORTS.yml
+
+port_profiles:
+  - profile: PP-DOT1X
+    mode: "trunk phone"
+    spanning_tree_portfast: edge
+    spanning_tree_bpduguard: enabled
+    poe:
+      priority: critical
+      reboot:
+        action: maintain
+      link_down:
+        action: maintain
+      shutdown:
+        action: power-off
+      limit:
+        class: 4
+    dot1x:
+      port_control: auto
+      reauthentication: true
+      pae:
+        mode: authenticator
+      host_mode:
+        mode: multi-host
+        multi_host_authenticated: true
+      mac_based_authentication:
+        enabled: true
+      timeout:
+        reauth_period: server
+        tx_period: 3
+      reauthorization_request_limit: 3
+
+network_ports:
+
+# ---------------- IDF1 ----------------
+
+  - switches:
+      - floor1-leaf[ab]
+      - floor1-member[1-3]
+    switch_ports:
+      - Ethernet1-12
+    description: IDF1 Standard Port
+    profile: PP-DOT1X
+    native_vlan: 110
+    structured_config:
+      phone:
+        trunk: untagged
+        vlan: 120
+    dot1x:
+      authentication_failure:
+        action: allow
+        allow_vlan: 130
+
+# ---------------- IDF1 ----------------
+
+  - switches:
+      - floor2-leaf[ab]
+      - floor2-member1
+    switch_ports:
+      - Ethernet1-24
+    description: IDF3 Standard Port
+    profile: PP-DOT1X
+    native_vlan: 310
+    structured_config:
+      phone:
+        trunk: untagged
+        vlan: 320
+    dot1x:
+      authentication_failure:
+        action: allow
+        allow_vlan: 330
+
+# ---------------- IDF3 ----------------
+
+  - switches:
+      - floor3-leafa
+    switch_ports:
+      - Ethernet3-4/1-47
+    description: IDF2 Standard Port
+    profile: PP-DOT1X
+    native_vlan: 210
+    structured_config:
+      phone:
+        trunk: untagged
+        vlan: 220
+    dot1x:
+      authentication_failure:
+        action: allow
+        allow_vlan: 230

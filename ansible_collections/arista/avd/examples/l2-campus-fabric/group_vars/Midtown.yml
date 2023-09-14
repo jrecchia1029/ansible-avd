@@ -1,0 +1,220 @@
+---
+### group_vars/DC1_FABRIC.yml
+
+fabric_name: Midtown
+
+# Set Design Type to L2ls
+design:
+  type: l2ls
+
+# Ansible connectivity definitions
+# eAPI connectivity via HTTPS is specified (as opposed to network_cli via SSH)
+ansible_connection: ansible.netcommon.httpapi
+# Specifies that we are indeed using Arista EOS
+ansible_network_os: arista.eos.eos
+# This user/password must exist on the switches to enable Ansible access
+ansible_user: admin
+ansible_password: admin
+# User escalation (to enter enable mode)
+ansible_become: true
+ansible_become_method: enable
+# Use SSL (HTTPS)
+ansible_httpapi_use_ssl: true
+# Do not try to validate certs
+ansible_httpapi_validate_certs: false
+
+# Spine Switches
+l3spine:
+  defaults:
+    platform: 7050SX3
+    # Spanning Tree
+    spanning_tree_mode: mstp
+    spanning_tree_priority: 4096
+    # Router ID
+    loopback_ipv4_pool: 10.10.1.0/24
+    # MLAG
+    mlag_peer_vlan: 4094
+    mlag_peer_ipv4_pool: 169.254.0.0/31
+    mlag_peer_l3_vlan: 4093
+    mlag_peer_l3_ipv4_pool: 192.168.255.0/31
+    virtual_router_mac_address: 00:1c:73:00:dc:01
+    mlag_interfaces: [Ethernet49, Ethernet50]
+  node_groups:
+    - group: Spines
+      nodes:
+        - name: spine1
+          id: 1
+          mgmt_ip: 172.100.100.101/24
+        - name: spine2
+          id: 2
+          mgmt_ip: 172.100.100.102/24
+
+# IDF - Leaf Switches
+leaf:
+  defaults:
+    platform: 720XP
+    mlag_peer_ipv4_pool: 169.254.0.0/24
+    spanning_tree_mode: mstp
+    spanning_tree_priority: 57344
+    inband_mgmt_subnet: 11.11.11.0/24
+    inband_mgmt_vlan: 3000
+    inband_mgmt_vrf: IB_MGMT
+
+  node_groups:
+    - group: floor1-leafs
+      # platform
+      platform: 720XP-48ZC2
+      # mlag
+      mlag: true
+      mlag_interfaces: [Ethernet51, Ethernet52]
+      # uplinks
+      uplink_interfaces: [Ethernet53/1, Ethernet54/1]
+      uplink_switches: [spine1, spine2]
+      # ptp
+      ptp:
+        enabled: true
+      # tags
+      filter:
+        tags: ["110", "120", "130"]
+      nodes:
+        - name: floor1-leafa
+          id: 1
+          uplink_switch_interfaces: [Ethernet1, Ethernet1]
+        - name: floor1-leafb
+          id: 2
+          uplink_switch_interfaces: [Ethernet2, Ethernet2]
+    - group: floor1-member1
+      # platform
+      platform: 720XP-24ZY4
+      # mlag
+      mlag: false
+      # uplinks
+      uplink_interfaces: [Ethernet25, Ethernet26]
+      uplink_switches: [floor1-leafa, floor1-leafb]
+      # ptp
+      ptp:
+        enabled: true
+      # tags
+      filter:
+        tags: ["110", "120", "130"]
+      nodes:
+        - name: floor1-member1
+          id: 3
+          uplink_switch_interfaces: [Ethernet53/2, Ethernet53/2]
+    - group: floor1-member2
+      # platform
+      platform: 720XP-24ZY4
+      # mlag
+      mlag: false
+      # uplinks
+      uplink_interfaces: [Ethernet25, Ethernet26]
+      uplink_switches: [floor1-leafa, floor1-leafb]
+      # ptp
+      ptp:
+        enabled: true
+      # tags
+      filter:
+        tags: ["110", "120", "130"]
+      nodes:
+        - name: floor1-member2
+          id: 4
+          uplink_switch_interfaces: [Ethernet54/2, Ethernet54/2]
+    - group: floor1-member3
+      # platform
+      platform: 710XP-16P
+      # mlag
+      mlag: false
+      # uplinks
+      uplink_interfaces: [Ethernet17, Ethernet18]
+      uplink_switches: [floor1-member1, floor1-member2]
+      # ptp
+      ptp:
+        enabled: true
+      # tags
+      filter:
+        tags: ["110", "120", "130"]
+      nodes:
+        - name: floor1-member3
+          id: 5
+          uplink_switch_interfaces: [Ethernet27, Ethernet27]
+    - group: floor2-leafs
+      # platform
+      platform: 720XP-48ZC2
+      # mlag
+      mlag: true
+      mlag_interfaces: [Ethernet51, Ethernet52]
+      # uplinks
+      uplink_interfaces: [Ethernet53/1]
+      # ptp
+      ptp:
+        enabled: true
+      # tags
+      filter:
+        tags: ["210", "220", "230"]
+      nodes:
+        - name: floor2-leafa
+          id: 6
+          uplink_switches: [spine1]
+          uplink_switch_interfaces: [Ethernet3]
+        - name: floor2-leafb
+          id: 7
+          uplink_switches: [spine2]
+          uplink_switch_interfaces: [Ethernet3]
+    - group: floor2-member1
+      # platform
+      platform: 720XP-24ZY4
+      # mlag
+      mlag: false
+      # uplinks
+      uplink_interfaces: [Ethernet25, Ethernet26]
+      uplink_switches: [floor2-leafa, floor2-leafb]
+      # ptp
+      ptp:
+        enabled: true
+      # tags
+      filter:
+        tags: ["210", "220", "230"]
+      nodes:
+        - name: floor2-member1
+          id: 8
+          uplink_switch_interfaces: [Ethernet53/2, Ethernet53/2]
+    - group: floor3-leafs
+      # platform
+      platform: 750X
+      # mlag
+      mlag: false
+      # uplinks
+      uplink_switches: [spine1, spine2]
+      uplink_interfaces: [Ethernet3/48, Ethernet4/48]
+      # tags
+      filter:
+        tags: ["310", "320", "330"]
+      nodes:
+        - name: floor3-leafa
+          id: 9
+          uplink_switch_interfaces: [Ethernet4, Ethernet4]
+
+#### Override for vEOS/cEOS Lab Caveats ####
+p2p_uplinks_mtu: 1500
+
+# Underlay Routing Protocol
+underlay_routing_protocol: ospf
+
+# Multicast
+underlay_multicast: true
+underlay_multicast_rps:
+  - rp: 1.1.1.1
+    groups:
+      - 224.0.0.0/10
+
+#### WAN/Core Edge Links ####
+# core_interfaces:
+#   p2p_links:
+#     - ip: [ 10.0.0.3/31, 10.0.0.2/31 ]
+#       nodes: [ spine1, WAN ]
+#       interfaces: [ Ethernet52/1, Ethernet1/1 ]
+#       include_in_underlay_protocol: true
+#     - ip: [ 10.0.0.5/31, 10.0.0.4/31 ]
+#       nodes: [ spine2, WAN ]
+#       interfaces: [ Ethernet52/1, Ethernet1/1 ]
+#       include_in_underlay_protocol: true

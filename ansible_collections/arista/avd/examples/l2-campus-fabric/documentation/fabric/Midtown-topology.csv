@@ -1,0 +1,271 @@
+Node Type,Node,Node Interface,Peer Type,Peer Node,Peer Interface,Node Interface Enabled
+leaf,floor1-leafa,Ethernet1,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet2,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet3,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet4,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet5,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet6,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet7,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet8,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet9,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet10,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet11,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet12,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafa,Ethernet51,mlag_peer,floor1-leafb,Ethernet51,True
+leaf,floor1-leafa,Ethernet52,mlag_peer,floor1-leafb,Ethernet52,True
+leaf,floor1-leafa,Ethernet53/1,l3spine,spine1,Ethernet1,True
+leaf,floor1-leafa,Ethernet53/2,leaf,floor1-member1,Ethernet25,True
+leaf,floor1-leafa,Ethernet54/1,l3spine,spine2,Ethernet1,True
+leaf,floor1-leafa,Ethernet54/2,leaf,floor1-member2,Ethernet25,True
+leaf,floor1-leafb,Ethernet1,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet2,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet3,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet4,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet5,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet6,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet7,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet8,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet9,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet10,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet11,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet12,network_port,IDF1 Standard Port,,True
+leaf,floor1-leafb,Ethernet51,mlag_peer,floor1-leafa,Ethernet51,True
+leaf,floor1-leafb,Ethernet52,mlag_peer,floor1-leafa,Ethernet52,True
+leaf,floor1-leafb,Ethernet53/1,l3spine,spine1,Ethernet2,True
+leaf,floor1-leafb,Ethernet53/2,leaf,floor1-member1,Ethernet26,True
+leaf,floor1-leafb,Ethernet54/1,l3spine,spine2,Ethernet2,True
+leaf,floor1-leafb,Ethernet54/2,leaf,floor1-member2,Ethernet26,True
+leaf,floor1-member1,Ethernet1,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet2,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet3,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet4,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet5,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet6,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet7,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet8,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet9,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet10,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet11,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet12,network_port,IDF1 Standard Port,,True
+leaf,floor1-member1,Ethernet25,leaf,floor1-leafa,Ethernet53/2,True
+leaf,floor1-member1,Ethernet26,leaf,floor1-leafb,Ethernet53/2,True
+leaf,floor1-member1,Ethernet27,leaf,floor1-member3,Ethernet17,True
+leaf,floor1-member2,Ethernet1,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet2,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet3,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet4,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet5,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet6,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet7,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet8,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet9,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet10,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet11,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet12,network_port,IDF1 Standard Port,,True
+leaf,floor1-member2,Ethernet25,leaf,floor1-leafa,Ethernet54/2,True
+leaf,floor1-member2,Ethernet26,leaf,floor1-leafb,Ethernet54/2,True
+leaf,floor1-member2,Ethernet27,leaf,floor1-member3,Ethernet18,True
+leaf,floor1-member3,Ethernet1,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet2,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet3,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet4,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet5,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet6,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet7,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet8,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet9,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet10,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet11,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet12,network_port,IDF1 Standard Port,,True
+leaf,floor1-member3,Ethernet17,leaf,floor1-member1,Ethernet27,True
+leaf,floor1-member3,Ethernet18,leaf,floor1-member2,Ethernet27,True
+leaf,floor2-leafa,Ethernet1,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet2,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet3,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet4,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet5,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet6,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet7,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet8,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet9,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet10,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet11,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet12,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet13,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet14,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet15,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet16,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet17,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet18,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet19,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet20,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet21,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet22,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet23,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet24,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafa,Ethernet51,mlag_peer,floor2-leafb,Ethernet51,True
+leaf,floor2-leafa,Ethernet52,mlag_peer,floor2-leafb,Ethernet52,True
+leaf,floor2-leafa,Ethernet53/1,l3spine,spine1,Ethernet3,True
+leaf,floor2-leafa,Ethernet53/2,leaf,floor2-member1,Ethernet25,True
+leaf,floor2-leafb,Ethernet1,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet2,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet3,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet4,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet5,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet6,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet7,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet8,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet9,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet10,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet11,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet12,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet13,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet14,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet15,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet16,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet17,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet18,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet19,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet20,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet21,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet22,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet23,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet24,network_port,IDF3 Standard Port,,True
+leaf,floor2-leafb,Ethernet51,mlag_peer,floor2-leafa,Ethernet51,True
+leaf,floor2-leafb,Ethernet52,mlag_peer,floor2-leafa,Ethernet52,True
+leaf,floor2-leafb,Ethernet53/1,l3spine,spine2,Ethernet3,True
+leaf,floor2-leafb,Ethernet53/2,leaf,floor2-member1,Ethernet26,True
+leaf,floor2-member1,Ethernet1,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet2,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet3,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet4,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet5,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet6,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet7,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet8,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet9,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet10,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet11,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet12,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet13,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet14,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet15,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet16,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet17,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet18,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet19,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet20,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet21,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet22,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet23,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet24,network_port,IDF3 Standard Port,,True
+leaf,floor2-member1,Ethernet25,leaf,floor2-leafa,Ethernet53/2,True
+leaf,floor2-member1,Ethernet26,leaf,floor2-leafb,Ethernet53/2,True
+leaf,floor3-leafa,Ethernet3/1,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/2,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/3,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/4,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/5,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/6,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/7,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/8,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/9,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/10,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/11,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/12,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/13,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/14,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/15,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/16,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/17,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/18,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/19,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/20,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/21,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/22,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/23,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/24,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/25,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/26,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/27,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/28,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/29,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/30,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/31,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/32,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/33,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/34,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/35,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/36,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/37,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/38,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/39,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/40,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/41,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/42,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/43,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/44,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/45,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/46,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/47,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet3/48,l3spine,spine1,Ethernet4,True
+leaf,floor3-leafa,Ethernet4/1,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/2,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/3,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/4,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/5,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/6,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/7,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/8,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/9,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/10,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/11,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/12,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/13,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/14,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/15,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/16,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/17,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/18,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/19,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/20,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/21,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/22,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/23,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/24,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/25,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/26,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/27,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/28,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/29,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/30,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/31,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/32,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/33,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/34,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/35,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/36,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/37,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/38,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/39,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/40,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/41,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/42,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/43,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/44,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/45,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/46,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/47,network_port,IDF2 Standard Port,,True
+leaf,floor3-leafa,Ethernet4/48,l3spine,spine2,Ethernet4,True
+l3spine,spine1,Ethernet1,leaf,floor1-leafa,Ethernet53/1,True
+l3spine,spine1,Ethernet2,leaf,floor1-leafb,Ethernet53/1,True
+l3spine,spine1,Ethernet3,leaf,floor2-leafa,Ethernet53/1,True
+l3spine,spine1,Ethernet4,leaf,floor3-leafa,Ethernet3/48,True
+l3spine,spine1,Ethernet49,mlag_peer,spine2,Ethernet49,True
+l3spine,spine1,Ethernet50,mlag_peer,spine2,Ethernet50,True
+l3spine,spine2,Ethernet1,leaf,floor1-leafa,Ethernet54/1,True
+l3spine,spine2,Ethernet2,leaf,floor1-leafb,Ethernet54/1,True
+l3spine,spine2,Ethernet3,leaf,floor2-leafb,Ethernet53/1,True
+l3spine,spine2,Ethernet4,leaf,floor3-leafa,Ethernet4/48,True
+l3spine,spine2,Ethernet49,mlag_peer,spine1,Ethernet49,True
+l3spine,spine2,Ethernet50,mlag_peer,spine1,Ethernet50,True

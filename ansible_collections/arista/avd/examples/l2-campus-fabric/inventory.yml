@@ -2,77 +2,44 @@
 # inventory.yml
 NYC:
   children:
-    1PENN:
+    Midtown:
       children:
-        1PENN_SPLINES:
+        Midtown_Spines:
           hosts:
-            SPLINE1:
+            spine1:
               ansible_host: 172.100.100.101
-            SPLINE2:
+            spine2:
               ansible_host: 172.100.100.102
-        1PENN_LEAFS:
+        Midtown_Leafs:
           children:
-            36East:
+            floor1:
               hosts:
-                36EastIDF-A:
+                floor1-leafa:
                   ansible_host: 172.100.100.103
-                36EastIDF-B:
+                floor1-leafb:
                   ansible_host: 172.100.100.104
-                36EastIDF-Member1:
+                floor1-member1:
                   ansible_host: 172.100.100.105
-                36EastIDF-Member2:
+                floor1-member2:
                   ansible_host: 172.100.100.106
-                36EastIDF-Member3:
+                floor1-member3:
                   ansible_host: 172.100.100.107
-            36West:
+            floor2:
               hosts:
-                36WestIDF:
+                floor2-leafa:
                   ansible_host: 172.100.100.108
-            # 37East:
-            #   hosts:
-            #     37EastIDF-A:
-            #       ansible_host: 172.100.100.109
-            #     37EastIDF-B:
-            #       ansible_host: 172.100.100.110
-            #     37EastIDF-Member1:
-            #       ansible_host: 172.100.100.111
-            #     37EastIDF-Member2:
-            #       ansible_host: 172.100.100.112
-            #     37EastIDF-Member3:
-            #       ansible_host: 172.100.100.113
-            #     37EastIDF-Member4:
-            #       ansible_host: 172.100.100.114
-            37West:
+                floor2-leafb:
+                  ansible_host: 172.100.100.109
+                floor2-member1:
+                  ansible_host: 172.100.100.110
+            floor3:
               hosts:
-                37WestIDF-A:
-                  ansible_host: 172.100.100.115
-                37WestIDF-B:
-                  ansible_host: 172.100.100.116
-            # 38East:
-            #   hosts:
-            #     38EastIDF:
-            #       ansible_host: 172.100.100.119
-            # 38West:
-            #   hosts:
-            #     38WestIDF:
-            #       ansible_host: 172.100.100.120
-            # 39East:
-            #   hosts:
-            #     39EastIDF:
-            #       ansible_host: 172.100.100.119
-            # 39West:
-            #   children:
-            #     39WestIDF-A:
-            #       ansible_host: 172.100.100.122
-            #     39WestIDF-B:
-            #       ansible_host: 172.100.100.123
-            #     39WestIDF-Member1:
-            #       ansible_host: 172.100.100.124
-    1PENN_NETWORK_SERVICES:
+                floor3-leafa:
+                  ansible_host: 172.100.100.111
+    Midtown_Network_Services:
       children:
-        DC1_LEAFS:
-        DC1_SPINES:
-    1PENN_NETWORK_PORTS:
+        Midtown_Leafs:
+        Midtown_Spines:
+    Midtown_Network_Ports:
       children:
-        DC1_LEAFS:
-        DC1_SPINES:
+        Midtown_Leafs:
